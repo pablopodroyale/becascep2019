@@ -31,8 +31,8 @@ namespace BecasCep.Controllers
         {
             var repoInscriptos = new Repositorio<Persona>(db);
             var personas = repoInscriptos.TraerTodos().Where(p => !p.Eliminado && !p.Sorteado && p.Estado == false && p.Carrera.Sede == model.Sede && p.Carrera.Turno == model.Turno);
-            int tope = personas.Count() - 1;
-            var personaSorteada = personas.ElementAtOrDefault(new Random().Next(0,tope));
+            int tope = personas.Count() > 0 ? (personas.Count() - 1) : 0;
+            var personaSorteada = personas.ToList().ElementAtOrDefault(new Random().Next(0,tope));
             SorteadoViewModel sorteado = null;
             if (personaSorteada != null)
             {

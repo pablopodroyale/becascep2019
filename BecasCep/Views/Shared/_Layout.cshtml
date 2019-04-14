@@ -8,14 +8,45 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/fonts/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="~/Content/datatables.extensions/TableTools/css/dataTables.tableTools.min.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="~/Content/agency.min.css" rel="stylesheet" />
 
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom fonts for this template -->
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/agency.min.css" rel="stylesheet" />
+    <link href="~/fonts/font-awesome.min.css" rel="stylesheet" />
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+        <link href="~/Content/Site.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+
+
+
+        <link href="~/Content/agency.min.css" rel="stylesheet" />
+
+
+        <link href="~/Content/animation.css" rel="stylesheet" />
+        <link href="~/Content/css/main.css" rel="stylesheet" />
+        <link href="~/Content/css/util.css" rel="stylesheet" />
+        <link href="~/Content/perfect-scrollbar.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap-reboot.min.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+              rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Kaushan+Script'
+              rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic'
+              rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700'
+              rel='stylesheet' type='text/css'>*@
     @*<link type="text/css" rel="stylesheet" hrf="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css" />*@
 
 
@@ -44,23 +75,32 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" @*href="ganadores.php"*@>Ganadores</a>
+                        <a class="nav-link js-scroll-trigger" Href="@Url.Action("Crear","Inscripcion")">Inscribisrse</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" @*href="index.php#encuesta"*@>Encuesta</a>
+                        <a class="nav-link js-scroll-trigger" Href="@Url.Action("ListadoGanadores","Inscripcion")">Ganadores</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" Href="@Url.Action("Crear","Inscripcion")">BECAS DE TRABAJO</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" Href="@Url.Action("Listado","Inscripcion")">Listado Inscriptos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" Href="@Url.Action("Sorteo","Sorteo")">Sorteo</a>
+                        <a class="nav-link js-scroll-trigger" Href="@Url.Action("Login","Account")">Login</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" Href="@Url.Action("ListadoAdmin","Admin")">Listado Admin</a>
-                    </li>
+                    @if (Request.IsAuthenticated && User.IsInRole(BecasCep.Models.Enums.RoleConst.Administrador))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" Href="@Url.Action("Sorteo","Sorteo")">Sorteo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" Href="@Url.Action("ListadoAdmin","Admin")">Listado Admin</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" Href="@Url.Action("LogOff","Account")">Logout</a>
+                        </li>
+                    }
+
                 </ul>
             </div>
         </div>
@@ -97,26 +137,55 @@
             </div>
         </footer>
     </div>
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact form JavaScript -->
+
+
+
+
+    <script src="~/Scripts/contact_me.min.js"></script>
+    <!-- Custom scripts for this template -->
+
+    <script src="~/Scripts/agency.min.js"></script>
+
+    <script src="~/Scripts/jquery.min.js"></script>
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/jquery.min.js"></script>
-    <script src="~/Scripts/jquery-3.3.1.slim.min.js"></script>
-   
-    <script src="~/Scripts/jquery.min.js"></script>
-    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
-    <link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery.easing.min.js"></script>
+
+    <script src="~/Scripts/jquery-3.3.1.intellisense.js"></script>
+
+    <script src="~/Scripts/SweetAlert.Js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
     <script src="~/Scripts/jqBootstrapValidation.js"></script>
     <script src="~/Scripts/jquery.easing.min.js"></script>
-    <script src="~/Scripts/jquery.easing.compatibility.js"></script>
-    <script src="~/Scripts/jquery.dataTables.min.js"></script>
-    <script src="~/Scripts/datatables.extensions/TableTools/js/dataTables.tableTools.js"></script>
-    <script src="~/Scripts/contact_me.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/Scripts/modernizr-2.8.3.js"></script>
-    <script src="~/Scripts/jquery-3.3.1.intellisense.js"></script>
-    <script src="~/Scripts/datatables.extensions/TableTools/js/dataTables.tableTools.min.js"></script>
-    <script src="~/Scripts/SweetAlert.Js"></script>
+    @*
+
+        <script src="~/Scripts/jquery-3.3.1.slim.min.js"></script>
+
+
+        <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+
+        <script src="~/Scripts/jquery.easing.min.js"></script>
+
+
+        <script src="~/Scripts/jquery.easing.compatibility.js"></script>
+
+        <script src="~/Scripts/datatables.extensions/TableTools/js/dataTables.tableTools.js"></script>
+        <script src="~/Scripts/contact_me.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        <script src="~/Scripts/modernizr-2.8.3.js"></script>
+
+        <script src="~/Scripts/perfect-scrollbar.min.js"></script>*@
+
 </body>
 </html>
 @RenderSection("scripts", false)

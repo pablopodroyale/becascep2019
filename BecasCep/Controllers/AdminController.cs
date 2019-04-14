@@ -24,7 +24,7 @@ namespace BecasCep.Controllers
         public ActionResult ListadoAdmin()
         {
             var repoPersona = new Repositorio<Persona>(db);
-            var personas = repoPersona.TraerTodos().OrderBy(p => p.Nombre).ToList().Select(p => new PersonaIndexViewModel()
+            var personas = repoPersona.TraerTodos().Where(p => !p.Eliminado).OrderBy(p => p.Nombre).ToList().Select(p => new PersonaIndexViewModel()
             {
                 Id = p.Id,
                 Nombre = p.Nombre,

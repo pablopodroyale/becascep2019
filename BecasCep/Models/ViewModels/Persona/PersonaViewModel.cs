@@ -14,12 +14,14 @@ namespace BecasCep.Models.ViewModels.Persona
         [Required]
         public string Apellido { get; set; }
         [Required]
+        [System.Web.Mvc.Remote("DniRepetido", "Inscripcion", HttpMethod = "POST", ErrorMessage = "El dni ya se encuentra inscripto")]
         public string Dni { get; set; }
         [Required]
+        [EmailAddress(ErrorMessage = "Formato de Email inválido")]
         public string Email { get; set; }
         [Required]
         public string Telefono { get; set; }
-     
+      
         public List<TipoCarrera> Carreras { get; set; }
         public List<Turno> Turnos { get; set; }
         public List<Sede> Sedes { get; set; }

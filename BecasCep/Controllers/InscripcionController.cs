@@ -22,7 +22,27 @@ namespace BecasCep.Controllers
         public ActionResult Listado()
         {
             var repoPersona = new Repositorio<Persona>(db);
-            var personas = repoPersona.TraerTodos().ToList().Select(p => new PersonaIndexViewModel()
+            var personas = repoPersona.TraerTodos().Where(p => !p.Eliminado && !p.Sorteado).ToList().Select(p => new PersonaIndexViewModel()
+            {
+                Nombre = p.Nombre,
+                Apellido = p.Apellido,
+                Dni = p.Dni,
+                Email = p.Email,
+                Telefono = p.Telefono,
+                Carrera = new Models.ViewModels.Carrera.CarreraViewModel()
+                {
+                    Nombre = p.Carrera.Nombre,
+                    Sede = p.Carrera.Sede,
+                    Turno = p.Carrera.Turno
+                }
+            }).ToList();
+            return View(personas);
+        }
+
+        public ActionResult ListadoGanadores()
+        {
+            var repoPersona = new Repositorio<Persona>(db);
+            var personas = repoPersona.TraerTodos().Where(p => !p.Eliminado && p.Sorteado).ToList().Select(p => new PersonaIndexViewModel()
             {
                 Nombre = p.Nombre,
                 Apellido = p.Apellido,
@@ -74,13 +94,28 @@ namespace BecasCep.Controllers
         [HttpPost]
         public ActionResult Crear(PersonaViewModel model)
         {
-            Persona persona = new Persona(model);
-            var repoPersona = new Repositorio<Persona>(db);
-            repoPersona.Crear(persona);
-            return RedirectToAction("Listado");
+            if (ModelState.IsValid)
+            {
+                Persona persona = new Persona(model);
+                var repoPersona = new Repositorio<Persona>(db);
+                repoPersona.Crear(persona);
+                return RedirectToAction("Listado");
+            }
+            return View(model);
+
         }
 
-      
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult DniRepetido(string dni)
+        {
+            var repoPersonas = new Repositorio<Persona>(db);
+            return Json(!repoPersonas.TraerTodos().Where(p => !p.Eliminado).Any(a =>a.Dni == dni));
+        }
+
+
+
 
 
     }
