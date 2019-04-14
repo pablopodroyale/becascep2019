@@ -1,0 +1,71 @@
+﻿@model BecasCep.Models.ViewModels.Sorteo.SorteoViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<<div>
+     <div class="container">
+         <div class="row">
+             <div class="col-lg-12 text-center">
+                 <h2>Sede SAN ISIDRO:</h2>
+                 @using (Html.BeginForm("Sorteado", "Sorteo", FormMethod.Post))
+                 {
+
+                     @Html.HiddenFor(m => m.Sede, new { @Value = (int)BecasCep.Models.Enums.Sede.SanIsidro })
+                     @Html.HiddenFor(m => m.Turno, new { @Value = (int)BecasCep.Models.Enums.Turno.Mañana })
+                     <input type="submit" value="Turno Mañana" class="btn btn-success btn-lg" />
+                     <br> <br>
+
+                 }
+                 @using (Html.BeginForm("Sorteado", "Sorteo", FormMethod.Post))
+                 {
+
+                     @Html.HiddenFor(m => m.Sede, new { @Value = (int)BecasCep.Models.Enums.Sede.SanIsidro })
+                     @Html.HiddenFor(m => m.Turno, new { @Value = (int)BecasCep.Models.Enums.Turno.Tarde })
+                     <input type="submit" value="Turno Tarde" class="btn btn-success btn-lg" />
+                     <br> <br>
+                 }
+                 @using (Html.BeginForm("Sorteado", "Sorteo", FormMethod.Post))
+                 {
+
+                     @Html.HiddenFor(m => m.Sede, new { @Value = (int)BecasCep.Models.Enums.Sede.SanIsidro })
+                     @Html.HiddenFor(m => m.Turno, new { @Value = (int)BecasCep.Models.Enums.Turno.Noche })
+                     <input type="submit" value="Turno Noche" class="btn btn-success btn-lg" />
+                     <br>
+                     <br>
+                 }
+                 <h2>Sede CABA:</h2>
+                 @using (Html.BeginForm("Sorteado", "Sorteo", FormMethod.Post))
+                 {
+
+                     @Html.HiddenFor(m => m.Sede, new { @Value = (int)BecasCep.Models.Enums.Sede.CABA })
+                     @Html.HiddenFor(m => m.Turno, new { @Value = (int)BecasCep.Models.Enums.Turno.Mañana })
+                     <input type="submit" value="Turno Mañana" class="btn btn-success btn-lg" />
+                     <br>
+                     <br>
+                 }
+                 @using (Html.BeginForm("Sorteado", "Sorteo", FormMethod.Post))
+                 {
+
+                     @Html.HiddenFor(m => m.Sede, new { @Value = (int)BecasCep.Models.Enums.Sede.CABA })
+                     @Html.HiddenFor(m => m.Turno, new { @Value = (int)BecasCep.Models.Enums.Turno.Tarde })
+                     <input type="submit" value="Turno Tarde" class="btn btn-success btn-lg" />
+                     <br>
+                     <br>
+                 }
+                 @using (Html.BeginForm("Sorteado", "Sorteo", FormMethod.Post))
+                 {
+
+                     @Html.HiddenFor(m => m.Sede, new { @Value = (int)BecasCep.Models.Enums.Sede.CABA })
+                     @Html.HiddenFor(m => m.Turno, new { @Value = (int)BecasCep.Models.Enums.Turno.Noche })
+                     <input type="submit" value="Turno Noche" class="btn btn-success btn-lg" />
+                     <br>
+                     <br>
+                 }
+             </div>
+         </div>
+     </div>
+</div>

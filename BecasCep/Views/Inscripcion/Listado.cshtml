@@ -1,0 +1,87 @@
+﻿@model List<BecasCep.Models.ViewModels.Persona.PersonaIndexViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<a href="~/Content/bootstrap.min.css.map">~/Content/bootstrap.min.css.map</a>
+<link href="~/Content/agency.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />*@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <p style="font-family:'Gotham-Bold.otf';">
+                #JuntxsSomosCEP Seguimos garantizando una herramienta solidaria
+                para todxs lxs estudiantes, que priorice el acceso y la
+                permanencia a la universidad p&uacuteblica. Nos renovamos
+                d&iacutea a d&iacutea, revolucionamos Psico y modernizamos el
+                sorteo de becas de trabajo para que te puedas anotar m&aacutes
+                f&aacutecilmente, de una forma m&aacutes eficiente y accesible.
+                Sabiendo que somos estudiantes y que nos cuesta encontrar un
+                trabajo que nos permita seguir adelante con nuestros estudios, el
+                CEP abre sus espacios a todxs lxs estudiantes para que puedan ser
+                parte, trabajando en apuntes, fotocopiadora o el bar.
+
+                <h2>Inscripción para las becas de trabajo</h2>
+        </div>
+    </div>
+</div>
+
+<div class="page-content-card p-10">
+    <div class="form-row mt-2" style="text-align:center">
+        <button class="btn btn-primary" id="btnFiltrar">Filtrar</button>
+    </div>
+    <table id="myTable" class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>dni</th>
+                <th>Carrera</th>
+                <th>Turno</th>
+                <th>Sede</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @(item.Nombre)
+                    </td>
+                    <td>
+                        @(item.Apellido)
+                    </td>
+                    <td>
+                        @(item.Dni)
+                    </td>
+                    <td>
+                        @(item.Carrera.Nombre)
+                    </td>
+                    <td>
+                        @(item.Carrera.Turno)
+                    </td>
+                    <td>
+                        @(item.Carrera.Sede)
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+@section Scripts{
+    
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+    }
+
+
+
+
+

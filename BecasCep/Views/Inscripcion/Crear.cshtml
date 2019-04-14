@@ -1,0 +1,96 @@
+﻿@model BecasCep.Models.ViewModels.Persona.PersonaViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <p style="font-family:'Gotham-Bold.otf';">
+                #JuntxsSomosCEP Seguimos garantizando una herramienta solidaria
+                para todxs lxs estudiantes, que priorice el acceso y la
+                permanencia a la universidad p&uacuteblica. Nos renovamos
+                d&iacutea a d&iacutea, revolucionamos Psico y modernizamos el
+                sorteo de becas de trabajo para que te puedas anotar m&aacutes
+                f&aacutecilmente, de una forma m&aacutes eficiente y accesible.
+                Sabiendo que somos estudiantes y que nos cuesta encontrar un
+                trabajo que nos permita seguir adelante con nuestros estudios, el
+                CEP abre sus espacios a todxs lxs estudiantes para que puedan ser
+                parte, trabajando en apuntes, fotocopiadora o el bar.
+
+                <h2>Inscripción para las becas de trabajo</h2>
+        </div>
+    </div>
+</div>
+
+
+@using (Html.BeginForm("Crear", "Inscripcion", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <input class="form-control" name="nombre" type="text" placeholder="Nombre *" required data-validation-required-message="Por favor ingresa tu nombre">
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="apellido" type="text"
+                       placeholder="Apellido *" required
+                       data-validation-required-message="Por favor ingresa tu apellido">
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="dni" type="text"
+                       placeholder="dni *" required
+                       data-validation-required-message="Por favor ingresa tu dni">
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="email" type="email"
+                       placeholder="Email *" required
+                       data-validation-required-message="Por favor ingrsa tu email.">
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="telefono" type="tel"
+                       placeholder="Teléfono *" required
+                       data-validation-required-message="Por favor ingresa tu Teléfono.">
+                <p class="help-block text-danger"></p>
+            </div>
+            <label>
+                Selecciona el turno que preferís:<br>
+            </label>
+            <div class="form-group">
+                @Html.DropDownListFor(x => x.Carrera.Turno, new SelectList(Model.Turnos), "-- Seleccione el Turno--", new { @class = "custom-select" })
+
+                @Html.ValidationMessageFor(m => m.Carrera.Turno, "", new { @class = "text-danger" })
+            </div>
+            <label>
+                Selecciona tu carrera:<br>
+            </label>
+            <div class="form-group">
+                @Html.DropDownListFor(x => x.Carrera.Nombre, new SelectList(Model.Carreras), "-- Seleccione la carrera--", new { @class = "custom-select" })
+            </div>
+            @Html.ValidationMessageFor(m => m.Carrera.Nombre, "", new { @class = "text-danger" })
+            <label>
+                Selecciona tu sede:<br>
+            </label>
+            <div class="form-group">
+                @Html.DropDownListFor(x => x.Carrera.Sede, new SelectList(Model.Sedes), "-- Seleccione la sede--", new { @class = "custom-select" })
+                @Html.ValidationMessageFor(m => m.Carrera.Sede, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <div class="col-lg-12 text-center">
+        <div id="success"></div>
+        <button value="Registrar" class="btn btn-primary btn-xl text-uppercase" style="background-color:#fed136;border-color:#fed136 " type="submit">Registrarse</button>
+    </div>
+    
+}
+
+
+@section Scripts{
+
+
+}
