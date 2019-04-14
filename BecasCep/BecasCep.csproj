@@ -521,6 +521,9 @@
     <Content Include="fonts\ubuntu\Ubuntu-Medium.ttf" />
     <Content Include="fonts\ubuntu\Ubuntu-MediumItalic.ttf" />
     <Content Include="fonts\ubuntu\Ubuntu-Regular.ttf" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile2.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\contact_me.js" />
     <Content Include="Scripts\contact_me.min.js" />

@@ -82,7 +82,7 @@ namespace BecasCep.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Listado","Inscripcion");
+                    return RedirectToAction("ListadoAdmin","Admin");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -159,7 +159,8 @@ namespace BecasCep.Controllers
                 {
                     ApplicationUser = user,
                     NickName = model.NickName,
-                    Nombre = model.Email
+                    Nombre = model.Email,
+                    EMail = model.Email
 
                 };
                 var db = new ApplicationDbContext();
@@ -171,7 +172,7 @@ namespace BecasCep.Controllers
 
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("ListadoAdmin", "Admin");
             }
 
             return View(model);

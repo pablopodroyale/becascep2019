@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace BecasCep.Controllers
 {
-    [Authorize (Roles = RoleConst.Administrador)]
+    //[Authorize (Roles = RoleConst.Administrador)]
     public class AdminController : Controller
     {
         private ApplicationDbContext db;

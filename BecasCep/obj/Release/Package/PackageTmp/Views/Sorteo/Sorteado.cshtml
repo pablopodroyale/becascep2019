@@ -1,0 +1,59 @@
+﻿@model BecasCep.Models.ViewModels.Sorteo.SorteadoViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Confirmar", "Sorteo", FormMethod.Post))
+{
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">SORTEADO</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    @if (Model != null)
+                    {
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>email</th>
+                                    <th>Telefono</th>
+                                    <th>dni</th>
+                                    <th>Confirmar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <!-- aca va el form que get -->
+                                    <td>@Model.Nombre</td>
+                                    <td>@Model.Apellido</td>
+                                    <td>@Model.Email</td>
+                                    <td>@Model.Telefono</td>
+                                    <td>@Model.Dni</td>
+                                    <td>
+                                        @Html.HiddenFor(p => p.Id)
+                                        <input type="submit" name="cambiar" value="confirmar" class="btn btn-success" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {   
+                        <div class="col-lg-12 offset-3">
+                            <h4>No hay personas inscriptas en este turno</h4>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
+

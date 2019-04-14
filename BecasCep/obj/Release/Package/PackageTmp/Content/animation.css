@@ -1,0 +1,18 @@
+
+var resultActores = '<table class="table table-responsive"><tr> <th>Nombre Actor</th> <th>Eliminar</th>  <th>Editar</th> </tr>';
+for (var i = 0; i < data.ActoresDisponibles.length; i++) {
+	for (var j = 0; j < data.ActoresSeleccionados.length; j++) {
+		if (data.ActoresDisponibles[i].Id == data.ActoresSeleccionados) {
+			resultActores += '<tr>' +
+				'<td> ' + data.ActoresDisponibles[i].Nombre +
+				'</td >' +
+				'<td> ' + '<button type= "button" class="btn btn-icon fuse-ripple-ready btnEliminarActor" aria- label="Product details" data- toggle="tooltip" data- placement="top" data- original - title="Borrar" >' +  
+								'<i class="icon icon-delete s-6" ></i >' + 
+							'</button > ' +
+				'</td > ' +  
+				'<td > <a class="btn btn-icon fuse-ripple-ready" aria-label="Edit" data-toggle="tooltip" data-placement="top" data-original-title="Editar con js"> <i class="icon icon-pencil s-6"></i> </a>' + 
+				'</td >' +
+		   '</tr > ';
+	}
+}
+$("#divSelectActores").html(resultActores);
